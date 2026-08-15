@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>yzvision-solutions — App development studio</title>
+<meta name="description" content="yzvision-solutions builds focused, AI-powered mobile apps — GoalPlate, Snap & Tag, and more." />
+<style>
+  :root {
+    --bg: #faf9f7;
+    --surface: #ffffff;
+    --surface-2: #f2efe9;
+    --ink: #1c1a1f;
+    --ink-muted: #5c5866;
+    --ink-faint: #8b8794;
+    --border: #e4e1da;
+    --accent: #3d3564;
+    --accent-ink: #2c2549;
+    --accent-soft: #ece9f5;
+    --tag-a: #2f6f5e;
+    --tag-a-soft: #e5f1ec;
+    --tag-b: #a15a2e;
+    --tag-b-soft: #f6ece2;
+    --tag-c: #3a5a8c;
+    --tag-c-soft: #e7edf6;
+    --shadow: 0 1px 2px rgba(28,26,31,0.05), 0 12px 28px -16px rgba(28,26,31,0.18);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #15131a;
+      --surface: #1c1a22;
+      --surface-2: #221f29;
+      --ink: #f1eef2;
+      --ink-muted: #b3adbd;
+      --ink-faint: #7d778a;
+      --border: #2c2833;
+      --accent: #a99ee0;
+      --accent-ink: #c1b8ee;
+      --accent-soft: #2a2438;
+      --tag-a: #7fcbb2;
+      --tag-a-soft: #1c2e28;
+      --tag-b: #e3a475;
+      --tag-b-soft: #302319;
+      --tag-c: #92b3e8;
+      --tag-c-soft: #1e2636;
+      --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 12px 28px -16px rgba(0,0,0,0.6);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --bg: #15131a;
+    --surface: #1c1a22;
+    --surface-2: #221f29;
+    --ink: #f1eef2;
+    --ink-muted: #b3adbd;
+    --ink-faint: #7d778a;
+    --border: #2c2833;
+    --accent: #a99ee0;
+    --accent-ink: #c1b8ee;
+    --accent-soft: #2a2438;
+    --tag-a: #7fcbb2;
+    --tag-a-soft: #1c2e28;
+    --tag-b: #e3a475;
+    --tag-b-soft: #302319;
+    --tag-c: #92b3e8;
+    --tag-c-soft: #1e2636;
+    --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 12px 28px -16px rgba(0,0,0,0.6);
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, "Segoe UI", ui-sans-serif, Roboto, sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+  }
+
+  a { color: var(--accent-ink); }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  .display {
+    font-family: "Iowan Old Style", "Palatino Linotype", Georgia, ui-serif, serif;
+  }
+
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 28px; }
+
+  header.site {
+    border-bottom: 1px solid var(--border);
+  }
+  .site-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 22px 0;
+  }
+  .wordmark {
+    font-weight: 700;
+    font-size: 17px;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .wordmark span { color: var(--accent-ink); }
+  .site-nav a.contact-link {
+    font-size: 14.5px;
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--ink-muted);
+    border: 1px solid var(--border);
+    padding: 7px 14px;
+    border-radius: 999px;
+  }
+  .site-nav a.contact-link:hover { color: var(--accent-ink); border-color: var(--accent); }
+
+  .hero {
+    padding: 84px 0 56px;
+  }
+  .eyebrow {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent-ink);
+    margin: 0 0 18px;
+  }
+  h1.hero-title {
+    font-size: clamp(34px, 5.5vw, 50px);
+    line-height: 1.1;
+    margin: 0 0 20px;
+    max-width: 15ch;
+    text-wrap: balance;
+    font-weight: 500;
+  }
+  p.hero-lede {
+    font-size: 19px;
+    color: var(--ink-muted);
+    max-width: 52ch;
+    margin: 0;
+  }
+
+  section.products { padding: 40px 0 72px; }
+  .section-head { margin-bottom: 28px; }
+  h2.section-title {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin: 0;
+  }
+
+  .product-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .product-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px 26px;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .product-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .product-name {
+    font-family: "Iowan Old Style", "Palatino Linotype", Georgia, ui-serif, serif;
+    font-size: 22px;
+    margin: 0;
+    font-weight: 600;
+  }
+  .tag {
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+  .tag-a { background: var(--tag-a-soft); color: var(--tag-a); }
+  .tag-b { background: var(--tag-b-soft); color: var(--tag-b); }
+  .tag-c { background: var(--tag-c-soft); color: var(--tag-c); }
+  .product-desc { color: var(--ink-muted); font-size: 15.5px; margin: 0; max-width: 62ch; }
+  .product-plat {
+    font-size: 13px;
+    color: var(--ink-faint);
+    margin-top: 4px;
+  }
+
+  section.approach {
+    padding: 8px 0 72px;
+    border-top: 1px solid var(--border);
+    margin-top: 8px;
+    padding-top: 56px;
+  }
+  .approach-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 28px;
+    margin-top: 24px;
+  }
+  .approach-item h3 {
+    font-size: 15.5px;
+    margin: 0 0 8px;
+    font-weight: 700;
+  }
+  .approach-item p {
+    font-size: 15px;
+    color: var(--ink-muted);
+    margin: 0;
+  }
+
+  footer.site {
+    border-top: 1px solid var(--border);
+    padding: 36px 0 48px;
+  }
+  .footer-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .footer-row p { margin: 0; color: var(--ink-faint); font-size: 14px; }
+  .footer-row a { color: var(--ink-muted); text-decoration: none; font-size: 14px; font-weight: 600; }
+  .footer-row a:hover { color: var(--accent-ink); }
+
+  @media (min-width: 640px) {
+    .hero-title { max-width: 18ch; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap site-nav">
+    <a class="wordmark" href="#">yzvision<span>-solutions</span></a>
+    <a class="contact-link" href="mailto:tzvika@yzvision-solutions.com">Contact</a>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <section class="hero">
+      <p class="eyebrow">App development studio</p>
+      <h1 class="hero-title display">Small, focused apps — built end to end.</h1>
+      <p class="hero-lede">yzvision-solutions designs, builds, and ships mobile and web apps — from the first sketch of an idea through to the App Store and Google Play.</p>
+    </section>
+
+    <section class="products">
+      <div class="section-head">
+        <h2 class="section-title">What we build</h2>
+      </div>
+      <div class="product-grid">
+
+        <div class="product-card">
+          <div class="product-top">
+            <h3 class="product-name">GoalPlate</h3>
+            <span class="tag tag-a">Flagship</span>
+          </div>
+          <p class="product-desc">AI-powered meal and calorie tracking. Snap a photo of a meal and GoalPlate identifies it, logs it against your daily goal, and keeps a running history — no manual entry.</p>
+          <p class="product-plat">Web · Android · iOS (in development)</p>
+        </div>
+
+        <div class="product-card">
+          <div class="product-top">
+            <h3 class="product-name">Snap &amp; Tag</h3>
+            <span class="tag tag-c">Utility</span>
+          </div>
+          <p class="product-desc">Snap a photo and let AI tag it automatically, so it's easy to search and share later — built for people whose camera roll has gotten out of hand.</p>
+          <p class="product-plat">Android</p>
+        </div>
+
+        <div class="product-card">
+          <div class="product-top">
+            <h3 class="product-name">HackAplate</h3>
+            <span class="tag tag-b">Planning</span>
+          </div>
+          <p class="product-desc">A recipe and meal planner that turns a week of goals into an actual shopping list and cooking schedule.</p>
+          <p class="product-plat">Web</p>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="approach">
+      <div class="section-head">
+        <h2 class="section-title">How we work</h2>
+      </div>
+      <div class="approach-grid">
+        <div class="approach-item">
+          <h3>Small team, direct ownership</h3>
+          <p>Every app is built and maintained by the same people who designed it — no hand-offs, no lost context.</p>
+        </div>
+        <div class="approach-item">
+          <h3>One codebase, every platform</h3>
+          <p>We build once and ship to web, Android, and iOS from the same source — faster iteration, consistent behavior everywhere.</p>
+        </div>
+        <div class="approach-item">
+          <h3>AI where it earns its place</h3>
+          <p>Machine learning shows up when it removes real friction — like recognizing a meal from a photo — not as a feature for its own sake.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="site">
+  <div class="wrap footer-row">
+    <p>© 2026 yzvision-solutions</p>
+    <a href="mailto:tzvika@yzvision-solutions.com">tzvika@yzvision-solutions.com</a>
+  </div>
+</footer>
+
+</body>
+</html>
