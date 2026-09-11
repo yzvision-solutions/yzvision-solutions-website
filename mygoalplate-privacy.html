@@ -7,132 +7,199 @@
 <meta name="description" content="How MyGoalPlate collects, uses, shares, retains and deletes your information.">
 <style>
   :root {
-    --bg: #111827;
-    --panel: #1f2937;
-    --line: #374151;
-    --text: #e5e7eb;
-    --muted: #9ca3af;
-    --accent: #22c55e;
+    --bg: #f6f2e9;
+    --surface: #fffdf8;
+    --surface-2: #eee6d2;
+    --ink: #211c14;
+    --ink-muted: #6e6250;
+    --ink-faint: #9c9280;
+    --border: #e2d8bf;
+    --accent: #8a6a2a;
+    --accent-ink: #6b501e;
+    --accent-soft: #f0e3bf;
+    --shadow: 0 1px 2px rgba(33,28,20,0.06), 0 14px 30px -18px rgba(33,28,20,0.24);
   }
   * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
   body {
     margin: 0;
-    padding: 32px 20px 72px;
     background: var(--bg);
-    color: var(--text);
-    font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--ink);
+    font-family: -apple-system, "Segoe UI", ui-sans-serif, Roboto, sans-serif;
+    font-size: 17px;
+    line-height: 1.65;
   }
-  main { max-width: 720px; margin: 0 auto; }
-  h1 { font-size: 1.75rem; line-height: 1.2; margin: 0 0 6px; }
-  h2 { font-size: 1.15rem; margin: 34px 0 10px; }
-  h3 { font-size: 1rem; margin: 20px 0 6px; color: var(--text); }
-  .lede { color: var(--muted); margin: 0 0 26px; }
-  ul { padding-left: 1.25em; }
+  a { color: var(--accent-ink); }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .display {
+    font-family: "Iowan Old Style", "Palatino Linotype", Georgia, ui-serif, serif;
+  }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 28px; }
+
+  header.site { border-bottom: 1px solid var(--border); }
+  .site-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 22px 0;
+  }
+  .wordmark {
+    font-weight: 700;
+    font-size: 17px;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .wordmark span { color: var(--accent-ink); }
+  .site-nav a.contact-link {
+    font-size: 14.5px;
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--ink-muted);
+    border: 1px solid var(--border);
+    padding: 7px 14px;
+    border-radius: 999px;
+  }
+  .site-nav a.contact-link:hover { color: var(--accent-ink); border-color: var(--accent); }
+
+  main.policy { padding: 56px 0 72px; }
+  main.policy .wrap { max-width: 720px; }
+  h1 { font-size: clamp(28px, 4.5vw, 38px); line-height: 1.15; margin: 0 0 8px; font-weight: 500; }
+  .lede { color: var(--ink-muted); margin: 0 0 28px; font-size: 15px; }
+  h2 { font-size: 1.15rem; margin: 38px 0 12px; font-weight: 700; color: var(--ink); }
+  h3 { font-size: 1rem; margin: 22px 0 6px; font-weight: 700; color: var(--ink); }
+  p { margin: 0 0 14px; }
+  ul { padding-left: 1.25em; margin: 0 0 14px; }
   li { margin-bottom: 7px; }
-  .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 16px 20px; margin: 18px 0; }
+  .panel { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; box-shadow: var(--shadow); padding: 18px 22px; margin: 18px 0; }
   .scroll { overflow-x: auto; }
   table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 0.95rem; min-width: 480px; }
-  th, td { text-align: left; padding: 9px 14px 9px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
-  th { color: var(--muted); font-weight: 600; }
-  a { color: var(--accent); }
-  footer { margin-top: 44px; padding-top: 18px; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.9rem; }
+  th, td { text-align: left; padding: 9px 14px 9px 0; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { color: var(--ink-faint); font-weight: 700; }
+  main.policy a { color: var(--accent); }
+  main.policy a:hover { text-decoration: underline; }
+
+  footer.site { border-top: 1px solid var(--border); padding: 36px 0 48px; }
+  .footer-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .footer-row p { margin: 0; color: var(--ink-faint); font-size: 14px; }
+  .footer-row a { color: var(--ink-muted); text-decoration: none; font-size: 14px; font-weight: 600; }
+  .footer-row a:hover { color: var(--accent-ink); }
 </style>
 </head>
 <body>
-<main>
-  <h1>MyGoalPlate Privacy Policy</h1>
-  <p class="lede">Last updated: 21 August 2026</p>
 
-  <p>This policy explains what MyGoalPlate collects, why, who it is shared with, how long it is kept, and how to get rid of it. It covers the MyGoalPlate mobile app and the MyGoalPlate web app.</p>
-
-  <h2>1. What we collect</h2>
-
-  <h3>Account information</h3>
-  <p>If you sign in with Google we receive your name, email address and profile picture. If you sign in with an email link we receive your email address. You can also use MyGoalPlate as a guest, in which case we hold no identifying information about you at all &mdash; only an anonymous identifier.</p>
-
-  <h3>Health and goal information</h3>
-  <p>The details you enter to calculate your targets: weight, height, age, gender and activity level; and the things you log: goals, meals, nutrition, and physical activity.</p>
-
-  <h3>Meal photographs</h3>
-  <p>Photographs you take or upload to have a meal analysed, and the nutrition estimates produced from them.</p>
-
-  <h3>App settings</h3>
-  <p>Preferences such as units, language, notification settings, and a record of which version of the terms you accepted.</p>
-
-  <h3>Purchase and usage information</h3>
-  <p>Your subscription status and plan, your credit balance, and a record of the AI features you have used. We do not receive or store your card details &mdash; see section 3.</p>
-
-  <h3>Technical information</h3>
-  <p>Standard server logs, and app performance measurements collected through Firebase Performance Monitoring.</p>
-
-  <h2>2. Why we use it</h2>
-  <ul>
-    <li>To provide the service: calculating your targets, analysing meals, and keeping your log in sync across devices.</li>
-    <li>To operate subscriptions and credits, and to prevent the same purchase being redeemed more than once.</li>
-    <li>To protect the service from abuse, including rate limiting and verifying that requests come from a genuine copy of the app.</li>
-    <li>To diagnose faults and improve performance.</li>
-  </ul>
-  <p>We do not use your information for advertising, and we do not sell it.</p>
-
-  <h2>3. Who we share it with</h2>
-  <p>We share only what each provider needs to do its job.</p>
-  <div class="scroll">
-  <table>
-    <tr><th>Provider</th><th>What they receive</th><th>Why</th></tr>
-    <tr><td>Google (Firebase &amp; Google Cloud)</td><td>All app data, as our hosting and database provider</td><td>Authentication, database, file storage, serverless functions, performance monitoring, abuse protection</td></tr>
-    <tr><td>Google (Gemini API)</td><td>Meal photographs and meal descriptions</td><td>Nutrition analysis</td></tr>
-    <tr><td>OpenAI</td><td>Meal photographs and meal descriptions</td><td>Nutrition analysis, on the alternative AI provider setting</td></tr>
-    <tr><td>Paddle</td><td>Payment and billing details you enter at checkout</td><td>Merchant of record for web purchases</td></tr>
-    <tr><td>Google Play</td><td>Payment and billing details you enter at checkout</td><td>Processing in-app purchases on Android</td></tr>
-  </table>
+<header class="site">
+  <div class="wrap site-nav">
+    <a class="wordmark" href="/">yzvision<span>-solutions</span></a>
+    <a class="contact-link" href="mailto:info@yzvision-solutions.com">Contact</a>
   </div>
-  <p>Our AI providers process meal images to return an analysis and are not permitted to use them to train their models or for their own marketing.</p>
-  <p><strong>We never see your card details.</strong> Payments are handled entirely by Paddle or Google Play, who keep their own records under their own privacy policies and retention periods.</p>
+</header>
 
-  <h2>4. Where your information is stored</h2>
-  <p>MyGoalPlate runs on Google Cloud infrastructure located in the United States. If you use the app from outside the United States, your information is transferred there.</p>
+<main class="policy">
+  <div class="wrap">
+    <h1 class="display">MyGoalPlate Privacy Policy</h1>
+    <p class="lede">Last updated: 21 August 2026</p>
 
-  <h2>5. How long we keep it</h2>
-  <div class="scroll">
-  <table>
-    <tr><th>Information</th><th>Retention</th></tr>
-    <tr><td>Your account, profile, goals, meals and photographs</td><td>Until you delete your account</td></tr>
-    <tr><td>Credit usage history</td><td>12 months, then deleted automatically</td></tr>
-    <tr><td>Guest (anonymous) accounts</td><td>Deleted automatically after 30 days of inactivity</td></tr>
-    <tr><td>Internal processing records</td><td>Up to 24 hours</td></tr>
-    <tr><td>Server logs</td><td>Cleared automatically on a rolling basis</td></tr>
-    <tr><td>Anonymised purchase records</td><td>Kept indefinitely, with no link to you, so a purchase cannot be redeemed twice</td></tr>
-  </table>
+    <p>This policy explains what MyGoalPlate collects, why, who it is shared with, how long it is kept, and how to get rid of it. It covers the MyGoalPlate mobile app and the MyGoalPlate web app.</p>
+
+    <h2>1. What we collect</h2>
+
+    <h3>Account information</h3>
+    <p>If you sign in with Google we receive your name, email address and profile picture. If you sign in with an email link we receive your email address. You can also use MyGoalPlate as a guest, in which case we hold no identifying information about you at all &mdash; only an anonymous identifier.</p>
+
+    <h3>Health and goal information</h3>
+    <p>The details you enter to calculate your targets: weight, height, age, gender and activity level; and the things you log: goals, meals, nutrition, and physical activity.</p>
+
+    <h3>Meal photographs</h3>
+    <p>Photographs you take or upload to have a meal analysed, and the nutrition estimates produced from them.</p>
+
+    <h3>App settings</h3>
+    <p>Preferences such as units, language, notification settings, and a record of which version of the terms you accepted.</p>
+
+    <h3>Purchase and usage information</h3>
+    <p>Your subscription status and plan, your credit balance, and a record of the AI features you have used. We do not receive or store your card details &mdash; see section 3.</p>
+
+    <h3>Technical information</h3>
+    <p>Standard server logs, and app performance measurements collected through Firebase Performance Monitoring.</p>
+
+    <h2>2. Why we use it</h2>
+    <ul>
+      <li>To provide the service: calculating your targets, analysing meals, and keeping your log in sync across devices.</li>
+      <li>To operate subscriptions and credits, and to prevent the same purchase being redeemed more than once.</li>
+      <li>To protect the service from abuse, including rate limiting and verifying that requests come from a genuine copy of the app.</li>
+      <li>To diagnose faults and improve performance.</li>
+    </ul>
+    <p>We do not use your information for advertising, and we do not sell it.</p>
+
+    <h2>3. Who we share it with</h2>
+    <p>We share only what each provider needs to do its job.</p>
+    <div class="scroll">
+    <table>
+      <tr><th>Provider</th><th>What they receive</th><th>Why</th></tr>
+      <tr><td>Google (Firebase &amp; Google Cloud)</td><td>All app data, as our hosting and database provider</td><td>Authentication, database, file storage, serverless functions, performance monitoring, abuse protection</td></tr>
+      <tr><td>Google (Gemini API)</td><td>Meal photographs and meal descriptions</td><td>Nutrition analysis</td></tr>
+      <tr><td>OpenAI</td><td>Meal photographs and meal descriptions</td><td>Nutrition analysis, on the alternative AI provider setting</td></tr>
+      <tr><td>Paddle</td><td>Payment and billing details you enter at checkout</td><td>Merchant of record for web purchases</td></tr>
+      <tr><td>Google Play</td><td>Payment and billing details you enter at checkout</td><td>Processing in-app purchases on Android</td></tr>
+    </table>
+    </div>
+    <p>Our AI providers process meal images to return an analysis and are not permitted to use them to train their models or for their own marketing.</p>
+    <p><strong>We never see your card details.</strong> Payments are handled entirely by Paddle or Google Play, who keep their own records under their own privacy policies and retention periods.</p>
+
+    <h2>4. Where your information is stored</h2>
+    <p>MyGoalPlate runs on Google Cloud infrastructure located in the United States. If you use the app from outside the United States, your information is transferred there.</p>
+
+    <h2>5. How long we keep it</h2>
+    <div class="scroll">
+    <table>
+      <tr><th>Information</th><th>Retention</th></tr>
+      <tr><td>Your account, profile, goals, meals and photographs</td><td>Until you delete your account</td></tr>
+      <tr><td>Credit usage history</td><td>12 months, then deleted automatically</td></tr>
+      <tr><td>Guest (anonymous) accounts</td><td>Deleted automatically after 30 days of inactivity</td></tr>
+      <tr><td>Internal processing records</td><td>Up to 24 hours</td></tr>
+      <tr><td>Server logs</td><td>Cleared automatically on a rolling basis</td></tr>
+      <tr><td>Anonymised purchase records</td><td>Kept indefinitely, with no link to you, so a purchase cannot be redeemed twice</td></tr>
+    </table>
+    </div>
+
+    <h2>6. Deleting your account</h2>
+    <div class="panel">
+      <p style="margin:0 0 8px"><strong>In the app:</strong> Settings &rarr; Delete Account. Deletion is immediate and permanent.</p>
+      <p style="margin:0"><strong>Can&rsquo;t reach the app?</strong> Email <a href="mailto:info@yzvision-solutions.com?subject=MyGoalPlate%20account%20deletion%20request">info@yzvision-solutions.com</a> from your account address.</p>
+    </div>
+    <p>This removes your sign-in, profile, goals, logged meals, meal photographs, settings, credit balance and usage history. Full detail, including the small amount of anonymised information we keep and why, is on the <a href="https://goalplate-app.web.app/delete-account.html">account deletion page</a>.</p>
+    <p>If you have an active subscription, cancel it before deleting your account. We cannot cancel a Google Play subscription on your behalf, and deleting your account first would leave you being charged with no way to manage it.</p>
+
+    <h2>7. Your rights</h2>
+    <p>Depending on where you live, you may have the right to access a copy of your information, correct it, delete it, object to or restrict how we use it, and receive it in a portable form. Most of this is available directly in the app: your profile and logged data are visible and editable in Settings and your goal history, and deletion is a single action.</p>
+    <p>For anything else, email <a href="mailto:info@yzvision-solutions.com">info@yzvision-solutions.com</a>. We aim to respond within 30 days. If you are in the UK or EU and are unhappy with our response, you may complain to your local data protection authority.</p>
+
+    <h2>8. Children</h2>
+    <p>MyGoalPlate is not intended for children under 13, and we do not knowingly collect information from them. If you believe a child has given us information, contact us and we will delete it.</p>
+
+    <h2>9. Security</h2>
+    <p>Access to your data is restricted so that only you can read it, and only our servers can change the parts that govern your subscription and credits. Data is encrypted in transit and at rest by our infrastructure provider. No system is perfectly secure, and we cannot guarantee absolute security.</p>
+
+    <h2>10. Changes to this policy</h2>
+    <p>If we make a significant change we will update the date at the top and, where the change materially affects you, ask you to review it in the app.</p>
+
+    <h2>11. Contact</h2>
+    <p>Questions about this policy or your information: <a href="mailto:info@yzvision-solutions.com">info@yzvision-solutions.com</a>.</p>
   </div>
-
-  <h2>6. Deleting your account</h2>
-  <div class="panel">
-    <p style="margin:0 0 8px"><strong>In the app:</strong> Settings &rarr; Delete Account. Deletion is immediate and permanent.</p>
-    <p style="margin:0"><strong>Can&rsquo;t reach the app?</strong> Email <a href="mailto:info@yzvision-solutions.com?subject=MyGoalPlate%20account%20deletion%20request">info@yzvision-solutions.com</a> from your account address.</p>
-  </div>
-  <p>This removes your sign-in, profile, goals, logged meals, meal photographs, settings, credit balance and usage history. Full detail, including the small amount of anonymised information we keep and why, is on the <a href="https://goalplate-app.web.app/delete-account.html">account deletion page</a>.</p>
-  <p>If you have an active subscription, cancel it before deleting your account. We cannot cancel a Google Play subscription on your behalf, and deleting your account first would leave you being charged with no way to manage it.</p>
-
-  <h2>7. Your rights</h2>
-  <p>Depending on where you live, you may have the right to access a copy of your information, correct it, delete it, object to or restrict how we use it, and receive it in a portable form. Most of this is available directly in the app: your profile and logged data are visible and editable in Settings and your goal history, and deletion is a single action.</p>
-  <p>For anything else, email <a href="mailto:info@yzvision-solutions.com">info@yzvision-solutions.com</a>. We aim to respond within 30 days. If you are in the UK or EU and are unhappy with our response, you may complain to your local data protection authority.</p>
-
-  <h2>8. Children</h2>
-  <p>MyGoalPlate is not intended for children under 13, and we do not knowingly collect information from them. If you believe a child has given us information, contact us and we will delete it.</p>
-
-  <h2>9. Security</h2>
-  <p>Access to your data is restricted so that only you can read it, and only our servers can change the parts that govern your subscription and credits. Data is encrypted in transit and at rest by our infrastructure provider. No system is perfectly secure, and we cannot guarantee absolute security.</p>
-
-  <h2>10. Changes to this policy</h2>
-  <p>If we make a significant change we will update the date at the top and, where the change materially affects you, ask you to review it in the app.</p>
-
-  <h2>11. Contact</h2>
-  <p>Questions about this policy or your information: <a href="mailto:info@yzvision-solutions.com">info@yzvision-solutions.com</a>.</p>
-
-  <footer>
-    <p><a href="/">&larr; yzvision-solutions</a></p>
-    <p>MyGoalPlate &mdash; <code>co.goalplate.android</code> &middot; <code>co.goalplate.ios</code></p>
-  </footer>
 </main>
+
+<footer class="site">
+  <div class="wrap footer-row">
+    <p>MyGoalPlate &mdash; <code>co.goalplate.android</code> &middot; <code>co.goalplate.ios</code></p>
+    <a href="/">&larr; yzvision-solutions</a>
+  </div>
+</footer>
+
 </body>
 </html>
